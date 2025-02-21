@@ -43,10 +43,27 @@ const Deletedata = async(req,res)=>{
     res.send(deletedata)
 }
 
+const Finddata =async (req,res)=>{
+    const {id}= req.body;
+    const Data = await EmpModel.findById(id);
+    res.send(Data);
+    console.log("data find");
+
+}
+const Editsavadata = async(req,res)=>{
+    const {_id}= req.body;
+    await EmpModel.findByIdAndUpdate(_id,req.body);
+    console.log("Data Is UPdate Succesfully");
+    res.send("update")
+
+}
+
 module.exports = {
     Insertdata,
     Displaydata,
     Searchdata,
     UpdateDisplaydata,
-    Deletedata
+    Deletedata,
+    Finddata,
+    Editsavadata
 }
